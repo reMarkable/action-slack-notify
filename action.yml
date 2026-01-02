@@ -42,10 +42,14 @@ runs:
           GITHUB_RUN: "${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }}"
           ENABLE_ESCAPES: "true"
         uses: "docker://ghcr.io/rtcamp/action-slack-notify@sha256:acc1c430721b27030d3dacf4273eec569388ad650e127bb9f1292f33cd9cd9bd" # v2.3.3
+        with:
+          entrypoint: "/entrypoint.sh"
 
       - name: "Slack Notification (Unformatted)"
         if: env.SLACKIFY_MARKDOWN != 'true'
         uses: "docker://ghcr.io/rtcamp/action-slack-notify@sha256:acc1c430721b27030d3dacf4273eec569388ad650e127bb9f1292f33cd9cd9bd" # v2.3.3
+        with:
+          entrypoint: "/entrypoint.sh"
         env:
           GITHUB_RUN: "${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }}"
 branding:
